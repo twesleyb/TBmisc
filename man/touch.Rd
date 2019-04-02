@@ -15,7 +15,7 @@ touch(file = "test.txt", dir = getwd())
 None
 }
 \description{
-Creates a file in the current working directory
+Creates a file in the current working directory. Inspired by the linux command `touch`.
 }
 \examples{
 touch("test.txt")
