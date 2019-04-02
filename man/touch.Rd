@@ -9,7 +9,7 @@ touch(file = "test.txt", dir = getwd())
 \arguments{
 \item{file}{character specifying file that will be created.}
 
-\item{dir}{character expansion for the text}
+\item{dir}{character specifying the working direcotry.}
 }
 \value{
 None
