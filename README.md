@@ -1,2 +1,2 @@
-# TBmisc
-Repository for utility functions.
+# TBmiscr
+Repository for R utility functions.
