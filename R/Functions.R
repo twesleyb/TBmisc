@@ -28,6 +28,34 @@ touch <- function(file = "test.txt", dir = getwd()){
 }
 
 #-------------------------------------------------------------------------------
+#' git pull
+#'
+#' Incorporate changes from remote git repository to current, local branch.
+#'
+#' @param dir character specifying the directory of a git repository.
+#'
+#' @return None
+#'
+#' @author Tyler W Bradshaw, \email{tyler.w.bradshaw@duke.edu}
+#' @references \url{https://git-scm.com/docs/git-pull}
+#' @keywords git status bash cmd
+#'
+#' @examples
+#' gitpull()
+#'
+#' @export
+#'
+gitpull <- function(dir = getwd()){
+  cmd_list <- list(
+    cmd1 = tolower(substr(dir,1,2)),
+    cmd2 = paste("cd",dir),
+    cmd3 = "git pull"
+  )
+  cmd <- paste(unlist(cmd_list),collapse = " & ")
+  shell(cmd)
+}
+
+#-------------------------------------------------------------------------------
 #' git status
 #'
 #' Check git status of a repository.
@@ -135,3 +163,5 @@ gitpush <- function(dir = getwd()){
   cmd <- paste(unlist(cmd_list),collapse = " & ")
   shell(cmd)
 }
+
+#-------------------------------------------------------------------------------
