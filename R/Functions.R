@@ -28,6 +28,12 @@ touch <- function(file = "test.txt", dir = getwd()){
 }
 
 #-------------------------------------------------------------------------------
+#' git config
+#'
+#'
+#'
+#'
+#-------------------------------------------------------------------------------
 #' git pull
 #'
 #' Incorporate changes from remote git repository to current, local branch.
