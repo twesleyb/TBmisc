@@ -30,9 +30,28 @@ touch <- function(file = "test.txt", dir = getwd()){
 #-------------------------------------------------------------------------------
 #' git config
 #'
+#' Configure git..
 #'
+#' @param user_name the user's GitHub username.
+#' @param user_email the user's GitHub email.
 #'
+#' @return None
 #'
+#' @author Tyler W Bradshaw, \email{tyler.w.bradshaw@duke.edu}
+#' @references \url{https://git-scm.com/docs/git-config}
+#' @keywords git config bash cmd
+#'
+#' @examples
+#' gitconfig("twesleyb","tyler.w.bradshaw@duke.edu")
+#'
+#' @export
+#'
+
+gitconfig <- function(user_name, user_email){
+  cmd1 = paste0("git config --global user.name ","'",user_name,"'")
+  cmd2 = paste0("git config --global user.email ","'",user_email,"'")
+  shell(cmd)}
+
 #-------------------------------------------------------------------------------
 #' git pull
 #'
