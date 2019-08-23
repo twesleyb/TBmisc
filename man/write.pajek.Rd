@@ -4,7 +4,7 @@
 \alias{write.pajek}
 \title{write.pajek}
 \usage{
-write.pajek(adjm, file, ...)
+write.pajek(adjm, file = "network.net", col.names = FALSE, ...)
 }
 \arguments{
 \item{adjm}{(matrix) symmetric adjacency matrix representing the network graph.}
