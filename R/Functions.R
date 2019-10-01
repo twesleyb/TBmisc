@@ -364,6 +364,8 @@ grobsize <- function(x) {
 
 ggplotScaleFreePlot <- function(connectivity, nBreaks = 10, truncated = FALSE,
                                 removeFirst = FALSE, main = "", ...) {
+	require(ggplot2)
+	require(normalp)
   k <- connectivity
   discretized.k <- cut(k, nBreaks)
   dk <- tapply(k, discretized.k, mean)
