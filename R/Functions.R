@@ -361,7 +361,6 @@ grobsize <- function(x) {
 #'
 #' @export
 
-
 ggplotScaleFreePlot <- function(connectivity, nBreaks = 10, truncated = FALSE,
                                 removeFirst = FALSE, main = "", ...) {
 	require(ggplot2)
@@ -412,5 +411,33 @@ ggplotScaleFreePlot <- function(connectivity, nBreaks = 10, truncated = FALSE,
     )
   out <- list(ggplot = plot, stats = OUTPUT)
   return(out)
+}
+
+#------------------------------------------------------------------------------
+
+#' col2hex
+#'
+#' convert a color to hexadecimal code
+#'
+#' @param color - the color to be converted to hex.
+#' @param maxValue - number giving the maximum of the color values range, see above.
+#'
+#' @return None
+#'
+#' @author Tyler W Bradshaw, \email{tyler.w.bradshaw@duke.edu}
+#'
+#' @references 
+#'
+#' @keywords 
+#'
+#' @examples col2hex("red")
+#'
+#' @export
+
+col2hex <- function(color, maxValue = 255) {
+	require(grDevices, quietly = TRUE)
+	z <- col2rgb(color)
+	hex <- rgb(z[1], z[2], z[3], maxColorValue = maxValue)
+	return(hex)
 }
 
