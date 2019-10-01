@@ -22,9 +22,12 @@ col2hex("red")
 
 }
 \references{
-
+none
 }
 \author{
 Tyler W Bradshaw, \email{tyler.w.bradshaw@duke.edu}
 }
-\keyword{}
+\keyword{color}
+\keyword{convert}
+\keyword{hex}
+\keyword{rgb}

@@ -426,9 +426,9 @@ ggplotScaleFreePlot <- function(connectivity, nBreaks = 10, truncated = FALSE,
 #'
 #' @author Tyler W Bradshaw, \email{tyler.w.bradshaw@duke.edu}
 #'
-#' @references 
+#' @references none
 #'
-#' @keywords 
+#' @keywords convert color hex rgb
 #'
 #' @examples col2hex("red")
 #'
