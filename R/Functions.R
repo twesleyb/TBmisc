@@ -1,4 +1,5 @@
 #-------------------------------------------------------------------------------
+
 #' Creating a file
 #'
 #' Creates a file in the current working directory. Inspired by the linux command `touch`.
