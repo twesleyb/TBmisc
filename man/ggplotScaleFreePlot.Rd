@@ -8,25 +8,20 @@ ggplotScaleFreePlot(connectivity, nBreaks = 10, truncated = FALSE,
   removeFirst = FALSE, main = "", ...)
 }
 \arguments{
-\item{x}{(grob) a grob object}
+\item{connectivity}{- igraph connectivity of a graph}
 }
 \value{
 None
 }
 \description{
-get the actual height and width of a grob
+evaluate the scale free property of a graph
 }
 \examples{
-ggsize(grob)
 
-}
-\references{
-\url{https://stackoverflow.com/questions/13867325/get-width-of-plot-area-in-ggplot2}
 }
 \author{
 Tyler W Bradshaw, \email{tyler.w.bradshaw@duke.edu}
 }
-\keyword{grob}
-\keyword{height}
-\keyword{size}
-\keyword{width}
+\keyword{connectivity}
+\keyword{igraph}
+\keyword{scale-free-fit}

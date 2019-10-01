@@ -346,18 +346,17 @@ grobsize <- function(x) {
 
 #' ggplotScaleFreePlot
 #'
-#' get the actual height and width of a grob
+#' evaluate the scale free property of a graph
 #'
-#' @param x (grob) a grob object
+#' @param connectivity - igraph connectivity of a graph
 #'
 #' @return None
 #'
 #' @author Tyler W Bradshaw, \email{tyler.w.bradshaw@duke.edu}
-#' @references \url{https://stackoverflow.com/questions/13867325/get-width-of-plot-area-in-ggplot2}
-#' @keywords grob size height width
+#' @references 
+#' @keywords igraph scale-free-fit connectivity
 #'
 #' @examples
-#' ggsize(grob)
 #'
 #' @export
 
