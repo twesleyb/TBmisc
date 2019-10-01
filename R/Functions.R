@@ -441,3 +441,41 @@ col2hex <- function(color, maxValue = 255) {
 	return(hex)
 }
 
+#------------------------------------------------------------------------------
+
+#' uniprot_mapping
+#'
+#' Query the Uniprot database mapping service in order to map gene ids.
+#'
+#' @param  ids - gene identifiers
+#' @param  from - input format
+#' @param  to - output format
+#'
+#' @return gene identifiers returned from Uniprot mapping service.
+#'
+#' @author Tyler W Bradshaw, \email{tyler.w.bradshaw@duke.edu}
+#'
+#' @references none
+#'
+#' @keywords convert color hex rgb
+#'
+#' @examples uniprot_mapping("HIF1A_HUMAN","ACC+ID","P_ENTREZGENEID")
+#'
+#' @export
+
+uniprot_mapping <- function(ids, from, to) {
+	# Query the database mapping service.
+	url <- "https://www.uniprot.org/uploadlists/"
+	request <- httr::GET(url, query = list('from'=from,
+					 'to'=to,
+					 'format'='tab',
+					 'query' = ids))
+	if (request$status == 200){
+		response <- httr::content(request, as = "text", encoding = "UTF-8")
+		return(data.table::fread(response))
+	} else {
+		error(request$status)
+	}
+}
+
+
