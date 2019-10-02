@@ -455,24 +455,24 @@ col2hex <- function(color, maxValue = 255) {
 #'
 #' @author Tyler W Bradshaw, \email{tyler.w.bradshaw@duke.edu}
 #'
-#' @references none
+#' @references \url{https://www.uniprot.org/help/api_idmapping}
 #'
 #' @keywords convert color hex rgb
 #'
-#' @examples uniprot_mapping("HIF1A_HUMAN","ACC+ID","P_ENTREZGENEID")
+#' @examples uniprot_mapping("ROGDI_HUMAN","ACC+ID","P_ENTREZGENEID")
 #'
 #' @export
 
-uniprot_mapping <- function(ids, from, to) {
+uniprot_mapping <- function(ids, from="ACC+ID", to="GENENAME") {
 	# Query the database mapping service.
 	url <- "https://www.uniprot.org/uploadlists/"
 	request <- httr::GET(url, query = list('from'=from,
 					 'to'=to,
 					 'format'='tab',
-					 'query' = ids))
+					 'query' = paste(ids,collapse=" ")))
 	if (request$status == 200){
 		response <- httr::content(request, as = "text", encoding = "UTF-8")
-		return(data.table::fread(response))
+		return(data.table::fread(response)$To)
 	} else {
 		error(request$status)
 	}
