@@ -1,6 +1,4 @@
-#-------------------------------------------------------------------------------
-
-#' Creating a file
+#' touch
 #'
 #' Creates a file in the current working directory. Inspired by the linux command `touch`.
 #'
@@ -46,7 +44,6 @@ touch <- function(file = "test.txt", dir = getwd()){
 #' gitconfig("twesleyb","tyler.w.bradshaw@duke.edu")
 #'
 #' @export
-#'
 
 gitconfig <- function(user_name, user_email){
   cmd1 = paste0("git config --global user.name ","'",user_name,"'")
@@ -344,7 +341,6 @@ grobsize <- function(x) {
 }
 
 #------------------------------------------------------------------------------
-
 #' ggplotScaleFreePlot
 #'
 #' evaluate the scale free property of a graph
@@ -354,10 +350,12 @@ grobsize <- function(x) {
 #' @return None
 #'
 #' @author Tyler W Bradshaw, \email{tyler.w.bradshaw@duke.edu}
-#' @references 
+#'
+#' @references None
+#'
 #' @keywords igraph scale-free-fit connectivity
 #'
-#' @examples
+#' @examples 
 #'
 #' @export
 
@@ -460,11 +458,11 @@ col2hex <- function(color, maxValue = 255) {
 #' @keywords convert color hex rgb
 #'
 #' @examples uniprot_mapping("ROGDI_HUMAN","ACC+ID","P_ENTREZGENEID")
-#'
 #' @export
 
 uniprot_mapping <- function(ids, from="ACC+ID", to="GENENAME") {
 	# Query the database mapping service.
+	# Fixme: problem encountered at first id that returns a na.
 	url <- "https://www.uniprot.org/uploadlists/"
 	request <- httr::GET(url, query = list('from'=from,
 					 'to'=to,
@@ -474,7 +472,7 @@ uniprot_mapping <- function(ids, from="ACC+ID", to="GENENAME") {
 		response <- httr::content(request, as = "text", encoding = "UTF-8")
 		return(data.table::fread(response)$To)
 	} else {
-		error(request$status)
+		stop(request$status)
 	}
 }
 

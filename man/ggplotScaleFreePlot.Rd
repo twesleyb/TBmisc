@@ -19,6 +19,9 @@ evaluate the scale free property of a graph
 \examples{
 
 }
+\references{
+None
+}
 \author{
 Tyler W Bradshaw, \email{tyler.w.bradshaw@duke.edu}
 }

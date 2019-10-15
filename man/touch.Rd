@@ -2,7 +2,7 @@
 % Please edit documentation in R/Functions.R
 \name{touch}
 \alias{touch}
-\title{Creating a file}
+\title{touch}
 \usage{
 touch(file = "test.txt", dir = getwd())
 }
