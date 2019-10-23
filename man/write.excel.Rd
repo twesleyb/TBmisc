@@ -17,7 +17,6 @@ Writes a list of data frames to excel workbook with the openxlsx library.
 }
 \examples{
 write.excel(data, file = "foobar.xlsx")
-
 }
 \references{
 

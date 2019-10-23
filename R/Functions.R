@@ -492,7 +492,6 @@ uniprot_mapping <- function(ids, from = "ACC+ID", to = "GENENAME") {
 #'
 #' @examples
 #' write.excel(data, file = "foobar.xlsx")
-#'
 write.excel <- function(data, file, rowNames = FALSE, colNames = TRUE) {
   require(openxlsx, quietly = TRUE)
   if (class(data) == "list") {
