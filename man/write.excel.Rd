@@ -2,26 +2,31 @@
 % Please edit documentation in R/Functions.R
 \name{write.excel}
 \alias{write.excel}
-\title{write.excel}
+\title{Write data to excel workbook.}
 \usage{
 write.excel(data, file, rowNames = FALSE, colNames = TRUE)
 }
 \arguments{
-\item{data}{- the named list of dataframes.}
+\item{data}{- list of data frames to be written to an excel document.}
 }
 \value{
-None
+none
 }
 \description{
-Writes a list of data frames to excel workbook with the openxlsx library.
+Write data to excel workbook.
 }
 \examples{
-write.excel(data, file = "foobar.xlsx")
+write.excel(data,file="foo.xlsx")
 }
 \references{
-
+none
 }
 \author{
 Tyler W Bradshaw, \email{tyler.w.bradshaw@duke.edu}
 }
-\keyword{}
+\keyword{documnent}
+\keyword{excel}
+\keyword{write}
+\keyword{write.excel}
+\keyword{xls}
+\keyword{xlsx}

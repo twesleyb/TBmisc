@@ -1,3 +1,4 @@
+#-------------------------------------------------------------------------------
 #' touch
 #'
 #' Creates a file in the current working directory. Inspired by the linux command `touch`.
@@ -306,7 +307,6 @@ ggplotScaleFreeFit <- function(sft) {
 }
 
 #------------------------------------------------------------------------------
-
 #' grobsize
 #'
 #' get the actual height and width of a grob
@@ -407,7 +407,6 @@ ggplotScaleFreePlot <- function(connectivity, nBreaks = 10, truncated = FALSE,
 }
 
 #------------------------------------------------------------------------------
-
 #' col2hex
 #'
 #' convert a color to hexadecimal code
@@ -435,7 +434,6 @@ col2hex <- function(color, maxValue = 255) {
 }
 
 #------------------------------------------------------------------------------
-
 #' uniprot_mapping
 #'
 #' Query the Uniprot database mapping service in order to map gene ids.
@@ -475,23 +473,22 @@ uniprot_mapping <- function(ids, from = "ACC+ID", to = "GENENAME") {
 }
 
 #------------------------------------------------------------------------------
-
-#' write.excel
+#' Write data to excel workbook. 
 #'
-#' Writes a list of data frames to excel workbook with the openxlsx library.
+#' @param data - list of data frames to be written to an excel document.
 #'
-#' @param data - the named list of dataframes.
-#'
-#' @return None
+#' @return none
 #'
 #' @author Tyler W Bradshaw, \email{tyler.w.bradshaw@duke.edu}
 #'
-#' @references
+#' @references none
 #'
-#' @keywords
+#' @keywords write excel write.excel documnent xlsx xls 
 #'
 #' @examples
-#' write.excel(data, file = "foobar.xlsx")
+#' write.excel(data,file="foo.xlsx")
+#' @export
+
 write.excel <- function(data, file, rowNames = FALSE, colNames = TRUE) {
   require(openxlsx, quietly = TRUE)
   if (class(data) == "list") {
