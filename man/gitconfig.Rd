@@ -18,8 +18,7 @@ None
 Configure git..
 }
 \examples{
-gitconfig("twesleyb","tyler.w.bradshaw@duke.edu")
-
+gitconfig("twesleyb", "tyler.w.bradshaw@duke.edu")
 }
 \references{
 \url{https://git-scm.com/docs/git-config}

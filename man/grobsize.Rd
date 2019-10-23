@@ -17,7 +17,6 @@ get the actual height and width of a grob
 }
 \examples{
 ggsize(grob)
-
 }
 \references{
 \url{https://stackoverflow.com/questions/13867325/get-width-of-plot-area-in-ggplot2}

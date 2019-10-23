@@ -19,7 +19,6 @@ convert a color to hexadecimal code
 }
 \examples{
 col2hex("red")
-
 }
 \references{
 none

@@ -17,7 +17,6 @@ Add file contents to the git index.
 }
 \examples{
 gitadd()
-
 }
 \references{
 \url{https://git-scm.com/docs/git-add}

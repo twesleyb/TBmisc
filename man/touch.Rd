@@ -19,7 +19,6 @@ Creates a file in the current working directory. Inspired by the linux command `
 }
 \examples{
 touch("test.txt")
-
 }
 \references{
 \url{https://gist.github.com/JoshCheek/1224782}

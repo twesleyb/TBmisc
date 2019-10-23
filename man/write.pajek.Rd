@@ -19,7 +19,6 @@ Write network adjacency network to file in Pajek (*.net) format.
 }
 \examples{
 write.pajek(adjm, "network.net")
-
 }
 \references{
 \url{https://gephi.org/users/supported-graph-formats/pajek-net-format/}

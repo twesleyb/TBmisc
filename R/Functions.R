@@ -13,16 +13,15 @@
 #'
 #' @examples
 #' touch("test.txt")
-#'
 #' @export
 #'
-touch <- function(file = "test.txt", dir = getwd()){
+touch <- function(file = "test.txt", dir = getwd()) {
   cmd_list <- list(
-    cmd1 = tolower(substr(dir,1,2)),
-    cmd2 = paste("cd",dir),
-    cmd3 = paste("echo >>",file)
+    cmd1 = tolower(substr(dir, 1, 2)),
+    cmd2 = paste("cd", dir),
+    cmd3 = paste("echo >>", file)
   )
-  cmd <- paste(unlist(cmd_list),collapse = " & ")
+  cmd <- paste(unlist(cmd_list), collapse = " & ")
   shell(cmd)
 }
 
@@ -41,14 +40,14 @@ touch <- function(file = "test.txt", dir = getwd()){
 #' @keywords git config bash cmd
 #'
 #' @examples
-#' gitconfig("twesleyb","tyler.w.bradshaw@duke.edu")
-#'
+#' gitconfig("twesleyb", "tyler.w.bradshaw@duke.edu")
 #' @export
 
-gitconfig <- function(user_name, user_email){
-  cmd1 = paste0("git config --global user.name ","'",user_name,"'")
-  cmd2 = paste0("git config --global user.email ","'",user_email,"'")
-  shell(cmd)}
+gitconfig <- function(user_name, user_email) {
+  cmd1 <- paste0("git config --global user.name ", "'", user_name, "'")
+  cmd2 <- paste0("git config --global user.email ", "'", user_email, "'")
+  shell(cmd)
+}
 
 #-------------------------------------------------------------------------------
 #' git pull
@@ -65,17 +64,16 @@ gitconfig <- function(user_name, user_email){
 #'
 #' @examples
 #' gitpull()
-#'
 #' @export
 #'
-gitpull <- function(dir = getwd()){
+gitpull <- function(dir = getwd()) {
   cmd_list <- list(
-    cmd1 = tolower(substr(dir,1,2)),
-    cmd2 = paste("cd",dir),
+    cmd1 = tolower(substr(dir, 1, 2)),
+    cmd2 = paste("cd", dir),
     cmd3 = "git pull"
   )
 
-  cmd <- paste(unlist(cmd_list),collapse = " & ")
+  cmd <- paste(unlist(cmd_list), collapse = " & ")
   shell(cmd)
 }
 
@@ -94,16 +92,15 @@ gitpull <- function(dir = getwd()){
 #'
 #' @examples
 #' gitstatus()
-#'
 #' @export
 #'
-gitstatus <- function(dir = getwd()){
+gitstatus <- function(dir = getwd()) {
   cmd_list <- list(
-    cmd1 = tolower(substr(dir,1,2)),
-    cmd2 = paste("cd",dir),
+    cmd1 = tolower(substr(dir, 1, 2)),
+    cmd2 = paste("cd", dir),
     cmd3 = "git status"
   )
-  cmd <- paste(unlist(cmd_list),collapse = " & ")
+  cmd <- paste(unlist(cmd_list), collapse = " & ")
   shell(cmd)
 }
 
@@ -122,16 +119,15 @@ gitstatus <- function(dir = getwd()){
 #'
 #' @examples
 #' gitadd()
-#'
 #' @export
 #'
-gitadd <- function(dir = getwd()){
+gitadd <- function(dir = getwd()) {
   cmd_list <- list(
-    cmd1 = tolower(substr(dir,1,2)),
-    cmd2 = paste("cd",dir),
+    cmd1 = tolower(substr(dir, 1, 2)),
+    cmd2 = paste("cd", dir),
     cmd3 = "git add --all"
   )
-  cmd <- paste(unlist(cmd_list),collapse = " & ")
+  cmd <- paste(unlist(cmd_list), collapse = " & ")
   shell(cmd)
 }
 
@@ -152,11 +148,10 @@ gitadd <- function(dir = getwd()){
 #'
 #' @examples
 #' gitcommit()
-#'
 #' @export
 #'
-gitcommit <- function(msg = "commit from Rstudio", dir = getwd()){
-  cmd = sprintf("git commit -m\"%s\"",msg)
+gitcommit <- function(msg = "commit from Rstudio", dir = getwd()) {
+  cmd <- sprintf("git commit -m\"%s\"", msg)
   system(cmd)
 }
 
@@ -175,16 +170,15 @@ gitcommit <- function(msg = "commit from Rstudio", dir = getwd()){
 #'
 #' @examples
 #' gitpush()
-#'
 #' @export
 #'
-gitpush <- function(dir = getwd()){
+gitpush <- function(dir = getwd()) {
   cmd_list <- list(
-    cmd1 = tolower(substr(dir,1,2)),
-    cmd2 = paste("cd",dir),
+    cmd1 = tolower(substr(dir, 1, 2)),
+    cmd2 = paste("cd", dir),
     cmd3 = "git push"
   )
-  cmd <- paste(unlist(cmd_list),collapse = " & ")
+  cmd <- paste(unlist(cmd_list), collapse = " & ")
   shell(cmd)
 }
 
@@ -204,7 +198,6 @@ gitpush <- function(dir = getwd()){
 #'
 #' @examples
 #' write.pajek(adjm, "network.net")
-#'
 #' @export
 
 write.pajek <- function(adjm, file = "network.net", col.names = FALSE, ...) {
@@ -217,16 +210,21 @@ write.pajek <- function(adjm, file = "network.net", col.names = FALSE, ...) {
     colnames(adjm) <- rownames(adjm) <- c(1:ncol(adjm))
   }
   edge_list <- as.data.table(na.omit(melt(adjm)))
-  colnames(edge_list) <- c("protA","protB","weight")
-  edge_list <- subset(edge_list, weight > 0 )
+  colnames(edge_list) <- c("protA", "protB", "weight")
+  edge_list <- subset(edge_list, weight > 0)
   node_names <- colnames(adjm)
-  v <- as.data.table(paste(seq(1,ncol(adjm)), " \"", node_names, "\"", sep = ""))
+  v <- as.data.table(paste(seq(1, ncol(adjm)), " \"", node_names, "\"", sep = ""))
   write.table(paste("*Vertices", dim(adjm)[1]), file,
-              quote = FALSE, sep = " ", row.names = FALSE, col.names = FALSE)
-  fwrite(v, file, quote = FALSE, sep = " ", row.names = FALSE,
-         col.names = FALSE, append = TRUE)
-  write.table("*Edges", file, quote = FALSE, sep = " ",
-              row.names = FALSE, col.names = FALSE, append = TRUE)
+    quote = FALSE, sep = " ", row.names = FALSE, col.names = FALSE
+  )
+  fwrite(v, file,
+    quote = FALSE, sep = " ", row.names = FALSE,
+    col.names = FALSE, append = TRUE
+  )
+  write.table("*Edges", file,
+    quote = FALSE, sep = " ",
+    row.names = FALSE, col.names = FALSE, append = TRUE
+  )
   fwrite(edge_list, file, sep = " ", col.names = FALSE, append = TRUE)
 }
 
@@ -246,7 +244,6 @@ write.pajek <- function(adjm, file = "network.net", col.names = FALSE, ...) {
 #'
 #' @examples
 #' silently(wgcna::bicor, exprDat)
-#'
 #' @export
 ## Define a function that can suppress unwanted messages from a function.
 silently <- function(func, ...) {
@@ -271,7 +268,6 @@ silently <- function(func, ...) {
 #'
 #' @examples
 #' ggplotScaleFreeFit(sft)
-#'
 #' @export
 
 ggplotScaleFreeFit <- function(sft) {
@@ -325,19 +321,18 @@ ggplotScaleFreeFit <- function(sft) {
 #'
 #' @examples
 #' ggsize(grob)
-#'
 #' @export
 
 grobsize <- function(x) {
-	# Function to get absolute size of a grob in inches.
-	# Modified from: Hack-R's solution on Stackoverflow, see refernces.
-	f <- tempfile()
-	png(f)
-	h <- grid::convertHeight(sum(x$heights), "in", TRUE)
-	w <- grid::convertWidth(sum(x$widths), "in", TRUE)
-	dev.off()
-	unlink(f)
-	return(c(w,h))
+  # Function to get absolute size of a grob in inches.
+  # Modified from: Hack-R's solution on Stackoverflow, see refernces.
+  f <- tempfile()
+  png(f)
+  h <- grid::convertHeight(sum(x$heights), "in", TRUE)
+  w <- grid::convertWidth(sum(x$widths), "in", TRUE)
+  dev.off()
+  unlink(f)
+  return(c(w, h))
 }
 
 #------------------------------------------------------------------------------
@@ -355,14 +350,14 @@ grobsize <- function(x) {
 #'
 #' @keywords igraph scale-free-fit connectivity
 #'
-#' @examples 
+#' @examples
 #'
 #' @export
 
 ggplotScaleFreePlot <- function(connectivity, nBreaks = 10, truncated = FALSE,
                                 removeFirst = FALSE, main = "", ...) {
-	require(ggplot2)
-	require(normalp)
+  require(ggplot2)
+  require(normalp)
   k <- connectivity
   discretized.k <- cut(k, nBreaks)
   dk <- tapply(k, discretized.k, mean)
@@ -428,15 +423,15 @@ ggplotScaleFreePlot <- function(connectivity, nBreaks = 10, truncated = FALSE,
 #'
 #' @keywords convert color hex rgb
 #'
-#' @examples col2hex("red")
-#'
+#' @examples
+#' col2hex("red")
 #' @export
 
 col2hex <- function(color, maxValue = 255) {
-	require(grDevices, quietly = TRUE)
-	z <- col2rgb(color)
-	hex <- rgb(z[1], z[2], z[3], maxColorValue = maxValue)
-	return(hex)
+  require(grDevices, quietly = TRUE)
+  z <- col2rgb(color)
+  hex <- rgb(z[1], z[2], z[3], maxColorValue = maxValue)
+  return(hex)
 }
 
 #------------------------------------------------------------------------------
@@ -457,23 +452,24 @@ col2hex <- function(color, maxValue = 255) {
 #'
 #' @keywords convert color hex rgb
 #'
-#' @examples uniprot_mapping("ROGDI_HUMAN","ACC+ID","P_ENTREZGENEID")
+#' @examples
+#' uniprot_mapping("ROGDI_HUMAN", "ACC+ID", "P_ENTREZGENEID")
 #' @export
 
-uniprot_mapping <- function(ids, from="ACC+ID", to="GENENAME") {
-	# Query the database mapping service.
-	# Fixme: problem encountered at first id that returns a na.
-	url <- "https://www.uniprot.org/uploadlists/"
-	request <- httr::GET(url, query = list('from'=from,
-					 'to'=to,
-					 'format'='tab',
-					 'query' = paste(ids,collapse=" ")))
-	if (request$status == 200){
-		response <- httr::content(request, as = "text", encoding = "UTF-8")
-		return(data.table::fread(response)$To)
-	} else {
-		stop(request$status)
-	}
+uniprot_mapping <- function(ids, from = "ACC+ID", to = "GENENAME") {
+  # Query the database mapping service.
+  # Fixme: problem encountered at first id that returns a na.
+  url <- "https://www.uniprot.org/uploadlists/"
+  request <- httr::GET(url, query = list(
+    "from" = from,
+    "to" = to,
+    "format" = "tab",
+    "query" = paste(ids, collapse = " ")
+  ))
+  if (request$status == 200) {
+    response <- httr::content(request, as = "text", encoding = "UTF-8")
+    return(data.table::fread(response)$To)
+  } else {
+    stop(request$status)
+  }
 }
-
-

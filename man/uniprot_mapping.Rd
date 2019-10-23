@@ -20,7 +20,7 @@ gene identifiers returned from Uniprot mapping service.
 Query the Uniprot database mapping service in order to map gene ids.
 }
 \examples{
-uniprot_mapping("ROGDI_HUMAN","ACC+ID","P_ENTREZGENEID")
+uniprot_mapping("ROGDI_HUMAN", "ACC+ID", "P_ENTREZGENEID")
 }
 \references{
 \url{https://www.uniprot.org/help/api_idmapping}

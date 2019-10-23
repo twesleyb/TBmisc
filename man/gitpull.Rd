@@ -17,7 +17,6 @@ Incorporate changes from remote git repository to current, local branch.
 }
 \examples{
 gitpull()
-
 }
 \references{
 \url{https://git-scm.com/docs/git-pull}

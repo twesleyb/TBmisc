@@ -17,7 +17,6 @@ Update remote git repository with local changes.
 }
 \examples{
 gitpush()
-
 }
 \references{
 \url{https://git-scm.com/docs/git-push}

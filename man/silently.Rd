@@ -19,7 +19,6 @@ suppress any unwanted output from a function with sink().
 }
 \examples{
 silently(wgcna::bicor, exprDat)
-
 }
 \references{
 \url{}

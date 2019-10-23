@@ -20,7 +20,6 @@ Record changes to the git repsoitory. Note: the user should have previously
 }
 \examples{
 gitcommit()
-
 }
 \references{
 \url{https://git-scm.com/docs/git-commit}

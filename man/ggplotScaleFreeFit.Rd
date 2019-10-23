@@ -17,7 +17,6 @@ Generate plots examining scale free fit of WGCNA network.
 }
 \examples{
 ggplotScaleFreeFit(sft)
-
 }
 \references{
 \url{}

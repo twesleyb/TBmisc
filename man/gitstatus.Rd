@@ -17,7 +17,6 @@ Check git status of a repository.
 }
 \examples{
 gitstatus()
-
 }
 \references{
 \url{https://git-scm.com/docs/git-status}
