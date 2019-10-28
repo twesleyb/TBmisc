@@ -544,7 +544,7 @@ write.excel <- function(data, file, rowNames = FALSE, colNames = TRUE) {
 #' @keywords install.packages install package
 #'
 #' @examples
-#' rip("package")
+#' rip("package", method = "BiocManager")
 
 rip <- function(package, method = "utils", ...) {
   # Install a R package. Supports the following methods:

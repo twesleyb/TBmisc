@@ -16,7 +16,7 @@ none
 Utility to help install R packages.
 }
 \examples{
-rip("package")
+rip("package", method = "BiocManager")
 }
 \references{
 none
