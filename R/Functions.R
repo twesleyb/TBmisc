@@ -1,4 +1,5 @@
 #-------------------------------------------------------------------------------
+
 #' touch
 #'
 #' Creates a file in the current working directory. Inspired by the linux command `touch`.
@@ -27,6 +28,7 @@ touch <- function(file = "test.txt", dir = getwd()) {
 }
 
 #-------------------------------------------------------------------------------
+
 #' git config
 #'
 #' Configure git..
@@ -51,6 +53,7 @@ gitconfig <- function(user_name, user_email) {
 }
 
 #-------------------------------------------------------------------------------
+
 #' git pull
 #'
 #' Incorporate changes from remote git repository to current, local branch.
@@ -79,6 +82,7 @@ gitpull <- function(dir = getwd()) {
 }
 
 #-------------------------------------------------------------------------------
+
 #' git status
 #'
 #' Check git status of a repository.
@@ -106,6 +110,7 @@ gitstatus <- function(dir = getwd()) {
 }
 
 #-------------------------------------------------------------------------------
+
 #' git add
 #'
 #' Add file contents to the git index.
@@ -133,6 +138,7 @@ gitadd <- function(dir = getwd()) {
 }
 
 #-------------------------------------------------------------------------------
+
 #' git commit
 #'
 #' Record changes to the git repsoitory. Note: the user should have previously
@@ -157,6 +163,7 @@ gitcommit <- function(msg = "commit from Rstudio", dir = getwd()) {
 }
 
 #-------------------------------------------------------------------------------
+
 #' git push
 #'
 #' Update remote git repository with local changes.
@@ -184,6 +191,7 @@ gitpush <- function(dir = getwd()) {
 }
 
 #-------------------------------------------------------------------------------
+
 #' write.pajek
 #'
 #' Write network adjacency network to file in Pajek (*.net) format.
@@ -230,6 +238,7 @@ write.pajek <- function(adjm, file = "network.net", col.names = FALSE, ...) {
 }
 
 #-------------------------------------------------------------------------------
+
 #' silently
 #'
 #' suppress any unwanted output from a function with sink().
@@ -255,6 +264,7 @@ silently <- function(func, ...) {
 }
 
 #-------------------------------------------------------------------------------
+
 #' ggplotScaleFreeFit
 #'
 #' Generate plots examining scale free fit of WGCNA network.
@@ -307,6 +317,7 @@ ggplotScaleFreeFit <- function(sft) {
 }
 
 #------------------------------------------------------------------------------
+
 #' grobsize
 #'
 #' get the actual height and width of a grob
@@ -336,6 +347,7 @@ grobsize <- function(x) {
 }
 
 #------------------------------------------------------------------------------
+
 #' ggplotScaleFreePlot
 #'
 #' evaluate the scale free property of a graph
@@ -407,6 +419,7 @@ ggplotScaleFreePlot <- function(connectivity, nBreaks = 10, truncated = FALSE,
 }
 
 #------------------------------------------------------------------------------
+
 #' col2hex
 #'
 #' convert a color to hexadecimal code
@@ -434,6 +447,7 @@ col2hex <- function(color, maxValue = 255) {
 }
 
 #------------------------------------------------------------------------------
+
 #' uniprot_mapping
 #'
 #' Query the Uniprot database mapping service in order to map gene ids.
@@ -473,7 +487,8 @@ uniprot_mapping <- function(ids, from = "ACC+ID", to = "GENENAME") {
 }
 
 #------------------------------------------------------------------------------
-#' Write data to excel workbook. 
+
+#' Write data to excel workbook.
 #'
 #' @param data - list of data frames to be written to an excel document.
 #'
@@ -483,10 +498,10 @@ uniprot_mapping <- function(ids, from = "ACC+ID", to = "GENENAME") {
 #'
 #' @references none
 #'
-#' @keywords write excel write.excel documnent xlsx xls 
+#' @keywords write excel write.excel documnent xlsx xls
 #'
 #' @examples
-#' write.excel(data,file="foo.xlsx")
+#' write.excel(data, file = "foo.xlsx")
 #' @export
 
 write.excel <- function(data, file, rowNames = FALSE, colNames = TRUE) {
@@ -510,4 +525,53 @@ write.excel <- function(data, file, rowNames = FALSE, colNames = TRUE) {
   }
   # Save workbook.
   saveWorkbook(wb, file, overwrite = TRUE)
+}
+
+#-------------------------------------------------------------------------------
+
+#' rip
+#'
+#' Utility to help install R packages.
+#'
+#' @param
+#'
+#' @return None
+#'
+#' @author Tyler W Bradshaw, \email{tyler.w.bradshaw@duke.edu}
+#'
+#' @references
+#'
+#' @keywords
+#'
+#' @examples
+#' rip("package")
+#' @export
+#'
+rip <- function(package, method = "utils", ...) {
+  # Install a R package. Supports the following methods:
+  #     utils::install.packages()
+  #     BiocManager::install()
+  #     devtools::install_github()
+  #     source - installs the package from Cran provided its source url,
+  #              this method depends upon the Linux bash utility, rip..
+  # If method is source, parse the package name from its url.
+  if (method == "source") {
+    url <- package
+    package <- strsplit(strsplit(url, "/")[[1]][6], "_")[[1]][1]
+  }
+  # Insure that the package is not already installed.
+  if (requireNamespace(package, quietly = TRUE)) {
+    message(paste(package, "is already installed!"))
+  } else if (method == "BiocManager") {
+    BiocManager::install(package, ...)
+  } else if (method == "utils") {
+    utils::install.packages(package, ...)
+  } else if (method == "devtools") {
+    devtools::install_github(package, ...)
+  } else if (method == "source") {
+    cmd <- paste("rip", url, ...)
+    system(cmd)
+  } else {
+    stop("problem installing package")
+  }
 }
