@@ -546,7 +546,7 @@ write.excel <- function(data, file, rowNames = FALSE, colNames = TRUE) {
 #' @examples
 #' rip("package")
 #' @export
-#'
+
 rip <- function(package, method = "utils", ...) {
   # Install a R package. Supports the following methods:
   #     utils::install.packages()
