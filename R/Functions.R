@@ -531,9 +531,11 @@ write.excel <- function(data, file, rowNames = FALSE, colNames = TRUE) {
 
 #' rip
 #'
-#' Utility to help install R packages.
+#' Utiliity function to help install R packages.
 #'
-#' @param package
+#' @param package - package to be installed.
+#'
+#' @param method - method to be used.
 #'
 #' @return none
 #'
@@ -541,10 +543,11 @@ write.excel <- function(data, file, rowNames = FALSE, colNames = TRUE) {
 #'
 #' @references none
 #'
-#' @keywords install.packages install package
+#' @keywords install.package install package
 #'
 #' @examples
-#' rip("package", method = "BiocManager")
+#' rip("https://cran.r-project.org/src/contrib/ncdf4_1.17.tar.gz",method="source")
+#' @export
 
 rip <- function(package, method = "utils", ...) {
   # Install a R package. Supports the following methods:

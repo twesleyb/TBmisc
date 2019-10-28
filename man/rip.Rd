@@ -7,16 +7,18 @@
 rip(package, method = "utils", ...)
 }
 \arguments{
-\item{package}{}
+\item{package}{- package to be installed.}
+
+\item{method}{- method to be used.}
 }
 \value{
 none
 }
 \description{
-Utility to help install R packages.
+Utiliity function to help install R packages.
 }
 \examples{
-rip("package", method = "BiocManager")
+rip("https://cran.r-project.org/src/contrib/ncdf4_1.17.tar.gz",method="source")
 }
 \references{
 none
@@ -25,5 +27,5 @@ none
 Tyler W Bradshaw, \email{tyler.w.bradshaw@duke.edu}
 }
 \keyword{install}
-\keyword{install.packages}
+\keyword{install.package}
 \keyword{package}
