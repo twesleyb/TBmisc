@@ -16,7 +16,7 @@ none
 Write data to excel workbook.
 }
 \examples{
-write.excel(data,file="foo.xlsx")
+write.excel(data, file = "foo.xlsx")
 }
 \references{
 none

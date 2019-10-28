@@ -533,19 +533,18 @@ write.excel <- function(data, file, rowNames = FALSE, colNames = TRUE) {
 #'
 #' Utility to help install R packages.
 #'
-#' @param
+#' @param package
 #'
-#' @return None
+#' @return none
 #'
 #' @author Tyler W Bradshaw, \email{tyler.w.bradshaw@duke.edu}
 #'
-#' @references
+#' @references none
 #'
-#' @keywords
+#' @keywords install.packages install package
 #'
 #' @examples
 #' rip("package")
-#' @export
 
 rip <- function(package, method = "utils", ...) {
   # Install a R package. Supports the following methods:
