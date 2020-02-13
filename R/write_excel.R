@@ -1,6 +1,15 @@
 #' Write data to excel workbook.
 #'
-#' @param data - list of data frames to be written to an excel document.
+#' @param data - named list of data frames (or equivalent) to be written to 
+#' an excel document.
+#'
+#' @param file - output file name.
+#'
+#' @param rowNames - should rownames of data be kept?
+#'
+#' @param colNames - should colnames of data be kept?
+#'
+#' @param '...' - additional arguments passed to openxlsx::writeData()
 #'
 #' @return none
 #'
@@ -8,14 +17,15 @@
 #'
 #' @references none
 #'
-#' @keywords write excel write.excel documnent xlsx xls
+#' @keywords write excel write.excel document xlsx xls
+#' 
+#' @import openxlsx
 #'
 #' @examples
 #' write.excel(data, file = "foo.xlsx")
 #' @export
 
-write.excel <- function(data, file, rowNames = FALSE, colNames = TRUE) {
-  require(openxlsx, quietly = TRUE)
+write_excel <- function(data, file, rowNames = FALSE, colNames = TRUE, ...) {
   if (class(data) == "list") {
     list <- data
   } else {
@@ -31,7 +41,7 @@ write.excel <- function(data, file, rowNames = FALSE, colNames = TRUE) {
   for (i in 1:length(list)) {
     df <- as.data.frame(list[[i]])
     addWorksheet(wb, sheetName = names(list[i]))
-    writeData(wb, sheet = i, df, rowNames = rowNames, colNames = colNames)
+    writeData(wb, sheet = i, df, rowNames = rowNames, colNames = colNames, ...)
   }
   # Save workbook.
   saveWorkbook(wb, file, overwrite = TRUE)
