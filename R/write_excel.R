@@ -1,4 +1,4 @@
-#' Write data to excel workbook.
+#' Create an excel workbook.
 #'
 #' @param data - named list of data frames (or equivalent) to be written to 
 #' an excel document.
