@@ -12,9 +12,12 @@ none
 \description{
 %notin% - the opposite of %in%
 }
+<<<<<<< HEAD
 \examples{
 x \%notin\% y
 }
+=======
+>>>>>>> a7a4942d95e2b37d7595ddc4faecdd3317578351
 \references{
 none
 }
