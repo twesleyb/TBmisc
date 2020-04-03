@@ -2,6 +2,7 @@
 
 export("%notin%")
 export(getrd)
+export(load_all)
 export(write_excel)
 import(dplyr)
 import(openxlsx)

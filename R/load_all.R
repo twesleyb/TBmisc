@@ -1,3 +1,4 @@
+#' @export
 load_all <- function(funcdir = file.path(getrd(),"R")) {
 		myfun <- list.files(funcdir, pattern="*\\.R", full.names=TRUE)
 		msg <- do.call(file.path,
