@@ -17,7 +17,6 @@ get the root directory of a git project.
 }
 \examples{
 getrd()
-
 }
 \references{
 none

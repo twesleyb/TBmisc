@@ -7,7 +7,7 @@
 write_excel(data, file, rowNames = FALSE, colNames = TRUE, ...)
 }
 \arguments{
-\item{data}{- named list of data frames (or equivalent) to be written to 
+\item{data}{- named list of data frames (or equivalent) to be written to
 an excel document.}
 
 \item{file}{- output file name.}

@@ -14,7 +14,6 @@
 #'
 #' @examples
 #' x %notin% y
-#'
 #' @export
 
 `%notin%` <- Negate(`%in%`)

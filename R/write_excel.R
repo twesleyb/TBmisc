@@ -1,6 +1,6 @@
 #' Create an excel workbook.
 #'
-#' @param data - named list of data frames (or equivalent) to be written to 
+#' @param data - named list of data frames (or equivalent) to be written to
 #' an excel document.
 #'
 #' @param file - output file name.
@@ -18,7 +18,7 @@
 #' @references none
 #'
 #' @keywords write excel write.excel document xlsx xls
-#' 
+#'
 #' @import openxlsx
 #'
 #' @examples

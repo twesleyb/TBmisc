@@ -14,7 +14,6 @@ none
 }
 \examples{
 x \%notin\% y
-
 }
 \references{
 none

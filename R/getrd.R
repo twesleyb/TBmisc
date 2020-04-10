@@ -14,7 +14,6 @@
 #'
 #' @examples
 #' getrd()
-#'
 #' @export
 
 getrd <- function(dpattern = ".git", fpattern = NULL, max_trys = 5) {
