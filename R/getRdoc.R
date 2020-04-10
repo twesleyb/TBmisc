@@ -1,7 +1,7 @@
 #' getRdoc
 #' @export
 
-get_Rdoc <- function(fun, pkg = NULL, arg = NULL, ...) {
+getRdoc <- function(fun, pkg = NULL, arg = NULL, ...) {
   # Build a list containing key pieces of the documentation for an R
   # object.
   #------------------------------------------------------------
