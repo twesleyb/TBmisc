@@ -2,14 +2,12 @@
 #' @export
 
 getRdoc <- function(fun, pkg = NULL, arg = NULL, ...) {
-  # Build a list containing key pieces of the documentation for an R
-  # object.
-  #------------------------------------------------------------
-  ## Define some functions utilized to do all the work.
-  #------------------------------------------------------------
-  # Define a function to parse the R help documentation of an R
-  # package::function.
-  get_help <- function(fun, pkg, ...) {
+	# Written to extract the documentation from download.file().
+	# Doesn't work for data.frame.
+
+  ## Define a function to parse the R help documentation of an R
+  ## package::function.
+  get_help <- function(fun,pkg=NULL) {
     # Get help.
     # character vector.
     # From StackOverflow:
@@ -21,10 +19,12 @@ getRdoc <- function(fun, pkg = NULL, arg = NULL, ...) {
     # help_text <- tools::parseLatex(help_latex)
     return(help_latex)
   }
+
   ## Function to remove empty strings from character vector.
   drop_empty_str <- function(string) {
     string[string != ""]
   }
+
   ## Function to get R documentation header.
   get_header <- function(latex) {
     # Get Header.
@@ -35,6 +35,7 @@ getRdoc <- function(fun, pkg = NULL, arg = NULL, ...) {
     header <- paste(unique(header_vec), collapse = ": ")
     return(list(header = header))
   }
+
   ## Function to get R documentation keywords.
   get_keywords <- function(latex) {
     # Get keywords.
@@ -43,6 +44,7 @@ getRdoc <- function(fun, pkg = NULL, arg = NULL, ...) {
     })
     return(list(keywords = unique(keywords)))
   }
+
   ## Function to get location of R documentation terms.
   get_loc <- function(latex, term) {
     # Get locations of the start and end of a given term.
@@ -51,6 +53,7 @@ getRdoc <- function(fun, pkg = NULL, arg = NULL, ...) {
     start_end <- sapply(re, function(ex) grep(ex, latex))
     return(start_end)
   }
+
   ## Function to get description of R documentation.
   get_description <- function(latex) {
     # Get description.
@@ -58,6 +61,7 @@ getRdoc <- function(fun, pkg = NULL, arg = NULL, ...) {
     idx <- do.call(seq, as.list(loc))
     return(list(description = latex[idx][2]))
   }
+
   ## Function to get usage of R documentation.
   get_usage <- function(latex) {
     # Get usage.
@@ -71,6 +75,7 @@ getRdoc <- function(fun, pkg = NULL, arg = NULL, ...) {
     usage <- gsub("\\s+", " ", usage_no_quote) # remove duplicate ws
     return(list(Usage = usage))
   }
+
   ## Function to get R documentation arguments.
   get_args <- function(latex) {
     # Extract arguments chunk.
@@ -115,10 +120,10 @@ getRdoc <- function(fun, pkg = NULL, arg = NULL, ...) {
     # Return named list of arguments and their documentation.
     return(doc_strings)
   }
-  #------------------------------------------------------------
+
   ## Parse the R documentation generated from help(function,package).
-  #------------------------------------------------------------
-  latex <- get_help("download.file", "utils")
+  latex <- get_help(fun, pkg)
+
   rdoc <- list(
     header = get_header(latex),
     keywords = get_keywords(latex),
@@ -126,11 +131,14 @@ getRdoc <- function(fun, pkg = NULL, arg = NULL, ...) {
     usage = get_usage(latex),
     args = get_args(latex)
   )
+
+  # Return the R documentation.
+  if (is.null(arg)) {
+    return(rdoc)
+  } else {
   # If provided, return just the argument of interest.
-  if (!is.null(arg)) {
     args <- get_args(latex)
     return(args[[arg]])
-  } else {
-    return(rdoc)
   }
+
 }
