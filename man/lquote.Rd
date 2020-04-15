@@ -2,12 +2,10 @@
 % Please edit documentation in R/lquote.R
 \name{lquote}
 \alias{lquote}
-\title{lquote
-export}
+\title{lquote}
 \usage{
 lquote(string, single = TRUE)
 }
 \description{
 lquote
-export
 }
