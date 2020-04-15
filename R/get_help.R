@@ -1,5 +1,5 @@
-#' getRdoc
-#' @export getRdoc
+#' get_help
+#' @export get_help
 
 # Define a function to parse the R help documentation of an R
 # package::function.
