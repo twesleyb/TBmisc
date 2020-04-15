@@ -1,5 +1,5 @@
 #' lquote
-#' export
+#' @export
 lquote <- function(string,single=TRUE){
 	# Wrap a string in single or double quotes.
 	single_quote = "'"
