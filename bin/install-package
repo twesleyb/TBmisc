@@ -1,9 +1,9 @@
 #!/usr/bin/env Rscript
 
 # Insure any changes have been pushed to git.
-message("Have you pushed changes to git?")
-source(file.path(dirname(getwd()),"R","prompt.R"))
-prompt()
+#message("Have you pushed changes to git?")
+#source(file.path(dirname(getwd()),"R","prompt.R"))
+#prompt()
 
 # Input arguments.
 git_user <- "twesleyb"
