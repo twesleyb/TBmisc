@@ -1,5 +1,5 @@
-#' get_help
-#' @export get_help
+#' getRdoc
+#' @export getRdoc
 
 # Define a function to parse the R help documentation of an R
 # package::function.
@@ -134,4 +134,9 @@ getRdoc <- function(fun, pkg = NULL, arg = NULL, ...) {
     args <- get_args(latex)
     return(args[[arg]])
   }
+
+help_doc <- getRdoc(fun,pkg)
+
+return(help_doc)
+
 }
