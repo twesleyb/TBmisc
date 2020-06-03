@@ -3,13 +3,12 @@
 # x     m - x    m
 # k-x   n-(k-x)  n
 
-a = de genes
-b = gene terms
-c = all genes
+# a = de genes
+# b = gene terms
+# c = all genes
 
-DE & IN | !DE & IN # union(a,b), 
-DE ! IN | !DE ! IN # len(a) - union(a,b),  union(N-len(a),
-
+# DE & IN | !DE & IN # union(a,b), 
+# DE ! IN | !DE ! IN # len(a) - union(a,b),  union(N-len(a),
 
 
 N = 30
