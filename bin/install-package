@@ -1,5 +1,7 @@
 #!/usr/bin/env Rscript
 
+renv::load(getrd())
+
 # Insure any changes have been pushed to git.
 #message("Have you pushed changes to git?")
 #source(file.path(dirname(getwd()),"R","prompt.R"))

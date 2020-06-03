@@ -1,5 +1,7 @@
 #!/usr/bin/env Rscript
 # Update a R packages documentation.
 
+renv::load(getrd(),quiet=TRUE)
+
 # You should be in the projects directory.
 devtools::document()

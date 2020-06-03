@@ -1,3 +1,11 @@
+#' prompt the user
+#'
+#' @return reads input from user.
+#'
+#' @author the internet
+#'
+#' @export
+
 prompt <- function(prompt = NULL) {
   # Default prompt.
   if (is.null(prompt)) {
