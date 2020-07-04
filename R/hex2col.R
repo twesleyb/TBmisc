@@ -10,12 +10,13 @@
 #'
 #' @author Tyler W Bradshaw, \email{tyler.w.bradshaw@duke.edu}
 #'
-#' @references none
+#' @references Silence Dogood, \StackOverflow{https://bit.ly/3gngca8}
 #'
 #' @keywords
 #'
 #' @examples
 #' hex2col('3F273C')
+#' hex2col 3F273C # as executable
 #'
 #' @export
 
@@ -45,7 +46,9 @@ hex2rgb <- function(hex,simplify=FALSE){
 
 rgb2col <- function(r,g,b,show=FALSE) {
 	# Convert a rgb color to its approximate R color.
-	suppressPackageStartupMessages({ library(scales) })
+	suppressPackageStartupMessages({ 
+		library(scales) 
+	})
        	# create colour name vs. rgb mapping table 
 	colourMap <- data.frame(colourNames = colours(),t(col2rgb(colours())))
 	# input test colours
@@ -64,16 +67,21 @@ rgb2col <- function(r,g,b,show=FALSE) {
 	approxMatchCol <- which.min(as.matrix(dist(combMat,upper=TRUE))[1,][-1])
 	# compare test colour with approximate matching colour
 	# generates a plot saved as Rplot.pdf
-	if (show) { scales::show_col(c(rgb2hex(r,g,b),rgb2hex(colourMap[approxMatchCol,2:4]))) }
+	if (show) { 
+		scales::show_col(c(rgb2hex(r,g,b),
+				   rgb2hex(colourMap[approxMatchCol,2:4]))) 
+	}
 	# return colour name
 	return(approxMatchCol)
 }
 
 
 hex2col <- function(hex){
-	# Wrapper that converts hex code to color name.
-	library(argparser)
-	library(scales)
+	# Main function - a wrapper that converts hex -> rgb -> color name.
+	suppressPackageStartupMessages({
+		library(argparser)
+		library(scales)
+	})
 	# Convert hex color to name.
 	color <- do.call(rgb2col,as_rgb(hex))
 	return(color)
@@ -84,8 +92,9 @@ if (!interactive()) {
 	# Parse input arguments.
 	root <- getrd()
 	renv::load(root,quiet=TRUE)
-	ap <- argparser::arg_parser("Get the approximate name of a hexademical color.")
-	ap <- argparser::add_argument(ap, "hex", help="the hex color to be converted", type="str")
+	ap <- argparser::arg_parser("Get the approximate name of a hex color.")
+	ap <- argparser::add_argument(ap, "hex", 
+				      help="a hexadecimal color", type="str")
 	args <- argparser::parse_args(ap)
 	hex <- args$hex
        	# Convert the color.

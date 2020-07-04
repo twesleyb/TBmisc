@@ -1,10 +1,6 @@
 {
   "R": {
-<<<<<<< HEAD
-    "Version": "3.6.3",
-=======
-    "Version": "4.0.0",
->>>>>>> 8d2b96ae686c96e71ef1365ad0e05a98088343f4
+    "Version": "4.0.2",
     "Repositories": [
       {
         "Name": "CRAN",
@@ -12,9 +8,8 @@
       }
     ]
   },
-<<<<<<< HEAD
   "Bioconductor": {
-    "Version": "3.10"
+    "Version": "3.11"
   },
   "Packages": {
     "BiocManager": {
@@ -89,10 +84,10 @@
     },
     "renv": {
       "Package": "renv",
-      "Version": "0.9.3",
+      "Version": "0.11.0",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "c1a367437d8a8a44bec4b9d4974cb20c"
+      "Hash": "1c3ef87cbb81c23ac96797781ec7aecc"
     },
     "rlang": {
       "Package": "rlang",
@@ -114,15 +109,6 @@
       "Source": "Repository",
       "Repository": "CRAN",
       "Hash": "ce4f6271baa94776db692f1cb2055bee"
-=======
-  "Packages": {
-    "renv": {
-      "Package": "renv",
-      "Version": "0.10.0",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Hash": "0d3f1c2b63e70b3d918246b4e2ca59b7"
->>>>>>> 8d2b96ae686c96e71ef1365ad0e05a98088343f4
     }
   }
 }

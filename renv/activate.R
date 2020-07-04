@@ -2,14 +2,10 @@
 local({
 
   # the requested version of renv
-<<<<<<< HEAD
-  version <- "0.9.3"
-=======
-  version <- "0.10.0"
+  version <- "0.11.0"
 
   # the project directory
   project <- getwd()
->>>>>>> 8d2b96ae686c96e71ef1365ad0e05a98088343f4
 
   # avoid recursion
   if (!is.na(Sys.getenv("RENV_R_INITIALIZING", unset = NA)))
@@ -40,80 +36,15 @@ local({
 
   }
 
-<<<<<<< HEAD
-  # construct path to renv in library
-  libpath <- local({
-
-    root <- Sys.getenv("RENV_PATHS_LIBRARY", unset = "renv/library")
-    prefix <- paste("R", getRversion()[1, 1:2], sep = "-")
-
-    # include SVN revision for development versions of R
-    # (to avoid sharing platform-specific artefacts with released versions of R)
-    devel <-
-      identical(R.version[["status"]],   "Under development (unstable)") ||
-      identical(R.version[["nickname"]], "Unsuffered Consequences")
-
-    if (devel)
-      prefix <- paste(prefix, R.version[["svn rev"]], sep = "-r")
-
-    file.path(root, prefix, R.version$platform)
-
-  })
-
-  # try to load renv from the project library
-  if (requireNamespace("renv", lib.loc = libpath, quietly = TRUE)) {
-
-    # warn if the version of renv loaded does not match
-    loadedversion <- utils::packageDescription("renv", fields = "Version")
-    if (version != loadedversion) {
-
-      # assume four-component versions are from GitHub; three-component
-      # versions are from CRAN
-      components <- strsplit(loadedversion, "[.-]")[[1]]
-      remote <- if (length(components) == 4L)
-        paste("rstudio/renv", loadedversion, sep = "@")
-      else
-        paste("renv", loadedversion, sep = "@")
-
-      fmt <- paste(
-        "renv %1$s was loaded from project library, but renv %2$s is recorded in lockfile.",
-        "Use `renv::record(\"%3$s\")` to record this version in the lockfile.",
-        "Use `renv::restore(packages = \"renv\")` to install renv %2$s into the project library.",
-        sep = "\n"
-      )
-
-      msg <- sprintf(fmt, loadedversion, version, remote)
-      warning(msg, call. = FALSE)
-
-    }
-
-    # load the project
-    return(renv::load())
-
-  }
-
-  # failed to find renv locally; we'll try to install from GitHub.
-  # first, set up download options as appropriate (try to use GITHUB_PAT)
-  install_renv <- function() {
-
-    message("Failed to find installation of renv -- attempting to bootstrap...")
-
-    # ensure .Rprofile doesn't get executed
-    rpu <- Sys.getenv("R_PROFILE_USER", unset = NA)
-    Sys.setenv(R_PROFILE_USER = "<NA>")
-    on.exit({
-      if (is.na(rpu))
-        Sys.unsetenv("R_PROFILE_USER")
-      else
-        Sys.setenv(R_PROFILE_USER = rpu)
-    }, add = TRUE)
-
-=======
   # load bootstrap tools   
   bootstrap <- function(version, library) {
   
+    # read repos (respecting override if set)
+    repos <- Sys.getenv("RENV_CONFIG_REPOS_OVERRIDE", unset = NA)
+    if (is.na(repos))
+      repos <- getOption("repos")
+  
     # fix up repos
-    repos <- getOption("repos")
     on.exit(options(repos = repos), add = TRUE)
     repos[repos == "@CRAN@"] <- "https://cloud.r-project.org"
     options(repos = repos)
@@ -173,12 +104,12 @@ local({
   
     # check for renv on CRAN matching this version
     db <- as.data.frame(available.packages(), stringsAsFactors = FALSE)
-    if (!"renv" %in% rownames(db))
-      stop("renv is not available on your declared package repositories")
   
-    entry <- db["renv", ]
-    if (!identical(entry$Version, version))
-      stop("renv is not available on your declared package repositories")
+    entry <- db[db$Package %in% "renv" & db$Version %in% version, ]
+    if (nrow(entry) == 0) {
+      fmt <- "renv %s is not available from your declared package repositories"
+      stop(sprintf(fmt, version))
+    }
   
     message("* Downloading renv ", version, " from CRAN ... ", appendLF = FALSE)
   
@@ -231,7 +162,6 @@ local({
     if (!identical(enabled, "TRUE"))
       return(FALSE)
   
->>>>>>> 8d2b96ae686c96e71ef1365ad0e05a98088343f4
     # prepare download options
     pat <- Sys.getenv("GITHUB_PAT")
     if (nzchar(Sys.which("curl")) && nzchar(pat)) {
@@ -247,41 +177,6 @@ local({
       options(download.file.method = "wget", download.file.extra = extra)
       on.exit(do.call(base::options, saved), add = TRUE)
     }
-<<<<<<< HEAD
-
-    # fix up repos
-    repos <- getOption("repos")
-    on.exit(options(repos = repos), add = TRUE)
-    repos[repos == "@CRAN@"] <- "https://cloud.r-project.org"
-    options(repos = repos)
-
-    # check for renv on CRAN matching this version
-    db <- as.data.frame(available.packages(), stringsAsFactors = FALSE)
-    if ("renv" %in% rownames(db)) {
-      entry <- db["renv", ]
-      if (identical(entry$Version, version)) {
-        message("* Installing renv ", version, " ... ", appendLF = FALSE)
-        dir.create(libpath, showWarnings = FALSE, recursive = TRUE)
-        utils::install.packages("renv", lib = libpath, quiet = TRUE)
-        message("Done!")
-        return(TRUE)
-      }
-    }
-
-    # try to download renv
-    message("* Downloading renv ", version, " ... ", appendLF = FALSE)
-    prefix <- "https://api.github.com"
-    url <- file.path(prefix, "repos/rstudio/renv/tarball", version)
-    destfile <- tempfile("renv-", fileext = ".tar.gz")
-    on.exit(unlink(destfile), add = TRUE)
-    utils::download.file(url, destfile = destfile, mode = "wb", quiet = TRUE)
-    message("Done!")
-
-    # attempt to install it into project library
-    message("* Installing renv ", version, " ... ", appendLF = FALSE)
-    dir.create(libpath, showWarnings = FALSE, recursive = TRUE)
-
-=======
   
     message("* Downloading renv ", version, " from GitHub ... ", appendLF = FALSE)
   
@@ -310,28 +205,10 @@ local({
     message("* Installing renv ", version, " ... ", appendLF = FALSE)
     dir.create(library, showWarnings = FALSE, recursive = TRUE)
   
->>>>>>> 8d2b96ae686c96e71ef1365ad0e05a98088343f4
     # invoke using system2 so we can capture and report output
     bin <- R.home("bin")
     exe <- if (Sys.info()[["sysname"]] == "Windows") "R.exe" else "R"
     r <- file.path(bin, exe)
-<<<<<<< HEAD
-    args <- c("--vanilla", "CMD", "INSTALL", "-l", shQuote(libpath), shQuote(destfile))
-    output <- system2(r, args, stdout = TRUE, stderr = TRUE)
-    message("Done!")
-
-    # check for successful install
-    status <- attr(output, "status")
-    if (is.numeric(status) && !identical(status, 0L)) {
-      text <- c("Error installing renv", "=====================", output)
-      writeLines(text, con = stderr())
-    }
-
-
-  }
-
-  try(install_renv())
-=======
     args <- c("--vanilla", "CMD", "INSTALL", "-l", shQuote(library), shQuote(tarball))
     output <- system2(r, args, stdout = TRUE, stderr = TRUE)
     message("Done!")
@@ -450,7 +327,10 @@ local({
 
   # load failed; attempt to bootstrap
   bootstrap(version, libpath)
->>>>>>> 8d2b96ae686c96e71ef1365ad0e05a98088343f4
+
+  # exit early if we're just testing bootstrap
+  if (!is.na(Sys.getenv("RENV_BOOTSTRAP_INSTALL_ONLY", unset = NA)))
+    return(TRUE)
 
   # try again to load
   if (requireNamespace("renv", lib.loc = libpath, quietly = TRUE)) {

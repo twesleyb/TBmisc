@@ -1,7 +1,8 @@
 #!/usr/bin/env Rscript
 # Update a R packages documentation.
 
-renv::load(getrd(),quiet=TRUE)
+root <- dirname(getwd()) # assumes you are in root/bin
+renv::load(root,quiet=TRUE)
 
 # You should be in the projects directory.
 renv::load(dirname(here))

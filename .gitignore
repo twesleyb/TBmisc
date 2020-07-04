@@ -1,11 +1,8 @@
 .Rproj.user
 ARCHIVE/
-<<<<<<< HEAD
+*.swp
 
 # ignore renv library
 renv/library/
 renv/staging/
 renv/settings.dcf
-=======
-*.swp
->>>>>>> 8d2b96ae686c96e71ef1365ad0e05a98088343f4
