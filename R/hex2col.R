@@ -20,10 +20,11 @@
 #'
 #' @export
 
+# Convert a rgb color to hex.
+rgb2hex <- function(r,g,b) { rgb(r, g, b, maxColorValue = 255) }
 
+# Adds '#' to hex color code if its not there.
 fix_hex <- function(hex_color) {
-	# Adds '#' to hex color code.
-	# USAGE: fix_hex('3F273C')
 	if (substr(hex_color,1,1) != "#") { 
 		return(paste0("#",hex_color)) 
 	} else {
@@ -32,9 +33,8 @@ fix_hex <- function(hex_color) {
 }
 
 
+# Convert hex to rgb.
 hex2rgb <- function(hex,simplify=FALSE){
-	# Coerce hex to rgb.
-	# USAGE: hex2rgb('3F273C')
 	rgb <- setNames(as.list(col2rgb(fix_hex(hex))),c("r","g","b"))
 	if (simplify) {
 		return(unlist(rgb)) 
@@ -43,9 +43,11 @@ hex2rgb <- function(hex,simplify=FALSE){
 	}
 }
 
-
+# Convert rgb to color name.
 rgb2col <- function(r,g,b,show=FALSE) {
 	# Convert a rgb color to its approximate R color.
+	# From:
+	# https://stackoverflow.com/questions/41209395/from-hex-color-code-or-rgb-to-color-name-using-r
 	suppressPackageStartupMessages({ 
 		library(scales) 
 	})
@@ -65,12 +67,6 @@ rgb2col <- function(r,g,b,show=FALSE) {
 	# find minimum distance point from test vector
 	# find closest matching colour name
 	approxMatchCol <- which.min(as.matrix(dist(combMat,upper=TRUE))[1,][-1])
-	# compare test colour with approximate matching colour
-	# generates a plot saved as Rplot.pdf
-	if (show) { 
-		scales::show_col(c(rgb2hex(r,g,b),
-				   rgb2hex(colourMap[approxMatchCol,2:4]))) 
-	}
 	# return colour name
 	return(approxMatchCol)
 }
@@ -82,22 +78,15 @@ hex2col <- function(hex){
 		library(argparser)
 		library(scales)
 	})
-	# Convert hex color to name.
+       	# Convert the color.
 	color <- do.call(rgb2col,as_rgb(hex))
 	return(color)
 }
 
-
 if (!interactive()) { 
 	# Parse input arguments.
-	root <- getrd()
-	renv::load(root,quiet=TRUE)
 	ap <- argparser::arg_parser("Get the approximate name of a hex color.")
-	ap <- argparser::add_argument(ap, "hex", 
-				      help="a hexadecimal color", type="str")
-	args <- argparser::parse_args(ap)
-	hex <- args$hex
-       	# Convert the color.
-	hex <- parse_args() 
+	ap <- argparser::add_argument(ap, "hex", help="a hexadecimal color", type="str")
+	hex <- argparser::parse_args(ap)[["hex"]]
 	message(hex2col(hex))
 }
