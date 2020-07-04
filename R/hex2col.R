@@ -1,5 +1,3 @@
-#!/usr/bin/env Rscript
-
 #' hex2col 
 #'
 #' get the approximate name of a hex color.
@@ -32,9 +30,9 @@ fix_hex <- function(hex_color) {
 	}
 }
 
-
 # Convert hex to rgb.
 hex2rgb <- function(hex,simplify=FALSE){
+	# Returns a list of r, g, and b components. 
 	rgb <- setNames(as.list(col2rgb(fix_hex(hex))),c("r","g","b"))
 	if (simplify) {
 		return(unlist(rgb)) 
@@ -71,7 +69,6 @@ rgb2col <- function(r,g,b,show=FALSE) {
 	return(approxMatchCol)
 }
 
-
 hex2col <- function(hex){
 	# Main function - a wrapper that converts hex -> rgb -> color name.
 	suppressPackageStartupMessages({
@@ -79,14 +76,6 @@ hex2col <- function(hex){
 		library(scales)
 	})
        	# Convert the color.
-	color <- do.call(rgb2col,as_rgb(hex))
+	color <- names(do.call(rgb2col,hex2rgb(hex)))
 	return(color)
-}
-
-if (!interactive()) { 
-	# Parse input arguments.
-	ap <- argparser::arg_parser("Get the approximate name of a hex color.")
-	ap <- argparser::add_argument(ap, "hex", help="a hexadecimal color", type="str")
-	hex <- argparser::parse_args(ap)[["hex"]]
-	message(hex2col(hex))
 }
