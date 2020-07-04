@@ -1,6 +1,10 @@
 {
   "R": {
+<<<<<<< HEAD
     "Version": "3.6.3",
+=======
+    "Version": "4.0.0",
+>>>>>>> 8d2b96ae686c96e71ef1365ad0e05a98088343f4
     "Repositories": [
       {
         "Name": "CRAN",
@@ -8,6 +12,7 @@
       }
     ]
   },
+<<<<<<< HEAD
   "Bioconductor": {
     "Version": "3.10"
   },
@@ -109,6 +114,15 @@
       "Source": "Repository",
       "Repository": "CRAN",
       "Hash": "ce4f6271baa94776db692f1cb2055bee"
+=======
+  "Packages": {
+    "renv": {
+      "Package": "renv",
+      "Version": "0.10.0",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "0d3f1c2b63e70b3d918246b4e2ca59b7"
+>>>>>>> 8d2b96ae686c96e71ef1365ad0e05a98088343f4
     }
   }
 }

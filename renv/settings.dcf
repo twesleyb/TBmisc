@@ -1,6 +1,10 @@
 external.libraries:
 ignored.packages:
 package.dependency.fields: Imports, Depends, LinkingTo
+<<<<<<< HEAD
 snapshot.type: simple
+=======
+snapshot.type: implicit
+>>>>>>> 8d2b96ae686c96e71ef1365ad0e05a98088343f4
 use.cache: TRUE
 vcs.ignore.library: TRUE
