@@ -1,2 +1,7 @@
 .Rproj.user
 ARCHIVE/
+
+# ignore renv library
+renv/library/
+renv/staging/
+renv/settings.dcf
