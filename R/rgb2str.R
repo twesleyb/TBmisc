@@ -1,4 +1,4 @@
-#' rgb2name
+#' rgb2str
 #'
 #' get the approximate name of a rgb color.
 #'
@@ -19,7 +19,7 @@
 #' @export
 
 # Convert rgb to color name.
-rgb2name <- function(r, g, b, show = FALSE) {
+rgb2str <- function(r, g, b, show = FALSE) {
   # Convert a rgb color to its approximate R color.
   suppressPackageStartupMessages({
     library(scales)

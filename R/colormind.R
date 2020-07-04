@@ -1,4 +1,5 @@
 #' colormind
+#'
 #' @export
 
 # Query colormind api for random colors.

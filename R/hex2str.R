@@ -1,4 +1,4 @@
-#' hex2name
+#' hex2str
 #'
 #' get the approximate name of a hex color.
 #'
@@ -14,7 +14,7 @@
 #'
 #' @export
 
-hex2name <- function(hex) {
+hex2str <- function(hex) {
   # Converts hex -> rgb -> color name.
   suppressPackageStartupMessages({
     library(scales)
