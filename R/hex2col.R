@@ -12,14 +12,7 @@
 #'
 #' @keywords
 #'
-#' @examples
-#' hex2col('3F273C')
-#' hex2col 3F273C # as executable
-#'
-#' @export
-
-# Convert a rgb color to hex.
-rgb2hex <- function(r,g,b) { rgb(r, g, b, maxColorValue = 255) }
+#' @export hex2col
 
 # Adds '#' to hex color code if its not there.
 fix_hex <- function(hex_color) {
@@ -41,36 +34,8 @@ hex2rgb <- function(hex,simplify=FALSE){
 	}
 }
 
-# Convert rgb to color name.
-rgb2col <- function(r,g,b,show=FALSE) {
-	# Convert a rgb color to its approximate R color.
-	# From:
-	# https://stackoverflow.com/questions/41209395/from-hex-color-code-or-rgb-to-color-name-using-r
-	suppressPackageStartupMessages({ 
-		library(scales) 
-	})
-       	# create colour name vs. rgb mapping table 
-	colourMap <- data.frame(colourNames = colours(),t(col2rgb(colours())))
-	# input test colours
-	testDF <- data.frame(colourNames="testCol",red = r,green = g,blue = b)
-	# combine both tables
-	combDF <- rbind(testDF,colourMap)
-	# convert in matrix representation 
-	combMat <- as.matrix(combDF[,-1])
-	# add row labels as colour names
-	rownames(combMat) <- combDF[,1]
-	# compute euclidean distance between test rgb vector and all the colours
-	# from mapping table 
-	# using dist function compute distance matrix,retain only upper matrix
-	# find minimum distance point from test vector
-	# find closest matching colour name
-	approxMatchCol <- which.min(as.matrix(dist(combMat,upper=TRUE))[1,][-1])
-	# return colour name
-	return(approxMatchCol)
-}
-
 hex2col <- function(hex){
-	# Main function - a wrapper that converts hex -> rgb -> color name.
+	# Converts hex -> rgb -> color name.
 	suppressPackageStartupMessages({
 		library(argparser)
 		library(scales)
