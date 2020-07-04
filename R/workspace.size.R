@@ -9,7 +9,7 @@
 #' @export
 
 workspace.size <- function() {
-	ws <- sum(sapply(ls(envir=globalenv()), function(x) object.size(get(x))))
-	class(ws) <- "object_size"
-	print(ws)
+  ws <- sum(sapply(ls(envir = globalenv()), function(x) object.size(get(x))))
+  class(ws) <- "object_size"
+  print(ws)
 }
