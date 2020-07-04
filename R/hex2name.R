@@ -1,12 +1,8 @@
-#' rgb2col 
+#' hex2name 
 #'
-#' get the approximate name of a rgb color.
+#' get the approximate name of a hex color.
 #'
-#' @param r - red
-#'
-#' @param g - green
-#'
-#' @param b - blue
+#' @param hex - hexadecimal color
 #'
 #' @return color - name of the color
 #'
@@ -16,23 +12,22 @@
 #'
 #' @keywords
 #'
-#' @export rgb2col
+#' @export
 
-# Convert a rgb color to hex.
-rgb2hex <- function(r,g,b) { rgb(r, g, b, maxColorValue = 255) }
-
-# Convert rgb to color name.
-rgb2col <- function(r,g,b,show=FALSE) {
-	# Convert a rgb color to its approximate R color.
-	# From:
-	# https://stackoverflow.com/questions/41209395/from-hex-color-code-or-rgb-to-color-name-using-r
-	suppressPackageStartupMessages({ 
-		library(scales) 
+hex2name <- function(hex){
+	# Converts hex -> rgb -> color name.
+	suppressPackageStartupMessages({
+		library(scales)
 	})
+	# If necessary, fix hex color (add #).
+	if (substr(hex,1,1) != "#") {  hex <- paste0("#",hex) }
+       	# Convert hex to rgb.
+	rgb <- setNames(as.list(col2rgb(fix_hex(hex))),c("r","g","b"))
+	## Get nearest neighbor in color space.
        	# create colour name vs. rgb mapping table 
 	colourMap <- data.frame(colourNames = colours(),t(col2rgb(colours())))
 	# input test colours
-	testDF <- data.frame(colourNames="testCol",red = r,green = g,blue = b)
+	testDF <- data.frame(colourNames="testCol",red = rgb$r,green = rgb$g,blue = rgb$b)
 	# combine both tables
 	combDF <- rbind(testDF,colourMap)
 	# convert in matrix representation 
