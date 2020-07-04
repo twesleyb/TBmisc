@@ -1,13 +1,23 @@
 #' colormind
 #'
+#' query the colormind api for random colors. Seed colors can be 
+#' specified by passing up to five rgb colors to the function.
+#'
+#' @param c1 - a color passed as a rgb vector, e.g. c(85,90,84).
+#'
 #' @export
 
 # Query colormind api for random colors.
-colormind <- function(c1=NA,c2=NA,c3=NA,c4=NA,c5=NA,random=TRUE) {
+colormind <- function(c1=NA,c2=NA,c3=NA,c4=NA,c5=NA) {
+
+	## DEFAULTS:
+	curl_ = "curl 'http://colormind.io/api/'"
+       	options_ =  "--silent" 
+	data_ = "--data-binary"
 
 	# Replace NA with 'N'.
 	replace_NA <- function(x) { 
-		if (is.na(x)) {
+		if (inherits(x,"logical")) {
 			return("N")
 		} else {
 			return(x)
@@ -15,12 +25,7 @@ colormind <- function(c1=NA,c2=NA,c3=NA,c4=NA,c5=NA,random=TRUE) {
 	}
 
 	# If input color was not specified (is NA) then replace it with 'N'.
-	input_colors <- sapply(c(c1,c2,c3,c4,c5),replace_NA)
-
-	# Query the colormind api with curl.
-	curl_ = "curl 'http://colormind.io/api/'"
-       	options_ =  "--silent" 
-	data_ = "--data-binary"
+	input_colors <- lapply(list(c1,c2,c3,c4,c5),replace_NA)
 
 	# Create input list
 	input_list <- list("input" = input_colors,
@@ -29,7 +34,7 @@ colormind <- function(c1=NA,c2=NA,c3=NA,c4=NA,c5=NA,random=TRUE) {
 	# Convert to json. Wrap in single quotes.
 	input_json <- lquote({ rjson::toJSON(input_list) })
 
-	# Create system cmd.
+	# Crate a cmd to query the colormind api with curl.
 	cmd <- paste(curl_,options_,data_,input_json,collapse="")
 
 	# Evaluate the command and parse the response as JSON.

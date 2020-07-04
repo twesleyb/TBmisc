@@ -4,8 +4,12 @@
 \alias{colormind}
 \title{colormind}
 \usage{
-colormind(c1 = NA, c2 = NA, c3 = NA, c4 = NA, c5 = NA, random = TRUE)
+colormind(c1 = NA, c2 = NA, c3 = NA, c4 = NA, c5 = NA)
+}
+\arguments{
+\item{c1}{- a color passed as a rgb vector, e.g. c(85,90,84).}
 }
 \description{
-colormind
+query the colormind api for random colors. Seed colors can be 
+specified by passing up to five rgb colors to the function.
 }
