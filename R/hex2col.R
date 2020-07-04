@@ -8,7 +8,7 @@
 #'
 #' @author Tyler W Bradshaw, \email{tyler.w.bradshaw@duke.edu}
 #'
-#' @references Silence Dogood, \StackOverflow{https://bit.ly/3gngca8}
+#' @references [Silence Dogood](https://bit.ly/3gngca8)
 #'
 #' @keywords
 #'

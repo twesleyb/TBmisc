@@ -21,7 +21,7 @@ hex2col 3F273C # as executable
 
 }
 \references{
-Silence Dogood, \StackOverflow{https://bit.ly/3gngca8}
+[Silence Dogood](https://bit.ly/3gngca8)
 }
 \author{
 Tyler W Bradshaw, \email{tyler.w.bradshaw@duke.edu}

@@ -1,6 +1,6 @@
 #!/usr/bin/env Rscript
 
-renv::load(getrd())
+here <- getwd(); root <- dirname(here); renv::load(root,quiet=TRUE)
 
 # Insure any changes have been pushed to git.
 #message("Have you pushed changes to git?")
