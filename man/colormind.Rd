@@ -4,7 +4,7 @@
 \alias{colormind}
 \title{colormind}
 \usage{
-colormind(random = TRUE)
+colormind(c1 = NA, c2 = NA, c3 = NA, c4 = NA, c5 = NA, random = TRUE)
 }
 \description{
 colormind
