@@ -2,7 +2,7 @@
 % Please edit documentation in R/getrd.R
 \name{getrd}
 \alias{getrd}
-\title{getrd - get the root directory}
+\title{getrd - get a git repositories root directory}
 \usage{
 getrd(dpattern = ".git", fpattern = NULL, max_trys = 5)
 }

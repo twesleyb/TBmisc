@@ -1,4 +1,4 @@
-#' getrd - get the root directory
+#' getrd - get a git repositories root directory
 #'
 #' get the root directory of a git project.
 #'

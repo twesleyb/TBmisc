@@ -1,8 +1,9 @@
 #!/usr/bin/env Rscript
 # Update a R packages documentation.
-#
-# assumes you are in root/bin
+
+
+# You should be in the projects directory.
 here <- getwd()
-root <- dirname(here) 
+root <- dirname(here)
 renv::load(root,quiet=TRUE)
 devtools::document()
