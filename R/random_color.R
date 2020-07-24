@@ -2,7 +2,8 @@
 #'
 #' @export
 
-random_color <-  function(count=1,hue=NULL,luminosity=c("bright","light","dark"){
+random_color <-  function(count=1,hue=NULL,
+			  luminosity=c("bright","light","dark")){
 	
 	# Path to python script.
 	root <- getrd()

@@ -1,5 +1,11 @@
 #' getRdoc
+#'
+#' Get a function's documentaion.
+#'
 #' @export getRdoc
+#'
+#' @examples
+#' getRdoc(fun, pkg,arg)
 
 # Define a function to parse the R help documentation of an R
 # package::function.
@@ -116,7 +122,6 @@ get_args <- function(latex) {
   return(doc_strings)
 }
 
-## Main:
 # Parse the R documentation generated from help(function,package).
 getRdoc <- function(fun, pkg = NULL, arg = NULL, ...) {
   # Written to extract the documentation from download.file().
@@ -137,8 +142,7 @@ getRdoc <- function(fun, pkg = NULL, arg = NULL, ...) {
     args <- get_args(latex)
     return(args[[arg]])
   }
-
+  #
   help_doc <- getRdoc(fun, pkg)
-
   return(help_doc)
 }
