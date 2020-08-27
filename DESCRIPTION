@@ -1,8 +1,8 @@
-Package: TBmiscr
-Title: What the Package Does (one line, title case)
+Package: TBmiscR
+Title: Miscellaneous R Functions
 Version: 0.0.0.9000
 Authors@R: person("Tyler", "Bradshaw", email = "tyler.w.bradshaw@duke.edu", role = c("aut", "cre"))
-Description: What the package does (one paragraph).
+Description: a collection of R utility functions
 Depends: R (>= 3.5.1)
 License: What license is it under?
 Encoding: UTF-8
