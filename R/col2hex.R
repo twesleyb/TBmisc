@@ -15,9 +15,9 @@
 #' @export
 #'
 #' @examples
-#' col2hex(color, maxValue = 255)
-col2hex <- function(color, maxValue = 255) {
+#' col2hex('red', 204)
+col2hex <- function(color, alpha = 255, maxValue = 255) {
   z <- grDevices::col2rgb(color)
-  hex <- rgb(z[1], z[2], z[3], maxColorValue = maxValue)
+  hex <- rgb(z[1], z[2], z[3], alpha = alpha, maxColorValue = maxValue)
   return(hex)
 }

@@ -4,7 +4,7 @@
 \alias{col2hex}
 \title{col2hex}
 \usage{
-col2hex(color, maxValue = 255)
+col2hex(color, alpha = 255, maxValue = 255)
 }
 \arguments{
 \item{color}{- character}
@@ -16,7 +16,7 @@ none
 Convert a color's character string to its hexadecimal code.
 }
 \examples{
-col2hex(color, maxValue = 255)
+col2hex('red', 204)
 }
 \references{
 none
