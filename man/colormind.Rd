@@ -10,6 +10,6 @@ colormind(c1 = NA, c2 = NA, c3 = NA, c4 = NA, c5 = NA)
 \item{c1}{- a color passed as a rgb vector, e.g. c(85,90,84).}
 }
 \description{
-query the colormind api for random colors. Seed colors can be 
+Query the colormind API for a random color palete. Seed colors can be 
 specified by passing up to five rgb colors to the function.
 }

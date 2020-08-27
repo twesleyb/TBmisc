@@ -7,5 +7,8 @@
 get_help(fun, pkg = NULL)
 }
 \description{
-getRdoc
+Get a function's documentaion.
+}
+\examples{
+getRdoc(fun, pkg,arg)
 }

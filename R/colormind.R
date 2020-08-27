@@ -36,7 +36,7 @@ colormind <- function(c1=NA,c2=NA,c3=NA,c4=NA,c5=NA) {
 	# Convert to json. Wrap in single quotes.
 	input_json <- lquote({ rjson::toJSON(input_list) })
 
-	# Crate a cmd to query the colormind api with curl.
+	# Create a cmd to query the colormind api with curl.
 	cmd <- paste(curl_,options_,data_,input_json,collapse="")
 
 	# Evaluate the command and parse the response as JSON.

@@ -1,6 +1,7 @@
 .Rproj.user
 ARCHIVE/
 *.swp
+bin/
 
 # ignore renv library
 renv/library/

@@ -13,7 +13,7 @@ col2hex(color, maxValue = 255)
 none
 }
 \description{
-Convert a color to its hexadecimal code.
+Convert a color's character string to its hexadecimal code.
 }
 \examples{
 col2hex(color, maxValue = 255)
