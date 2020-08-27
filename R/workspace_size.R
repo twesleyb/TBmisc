@@ -1,5 +1,5 @@
-#' Create an excel workbook.
-#'
+#' workspace_size 
+
 #' @return the size of the current environment in bytes
 #'
 #' @author sgibb
