@@ -2,10 +2,15 @@
 #'
 #' @export
 
+<<<<<<< HEAD
 random_color <-  function(count=1,hue=NULL,luminosity="light"){
        # Count - number of colors to generate.
        # Hue - a string 
        # luminosity - a string, one of c(light,dark,bright).
+=======
+random_color <-  function(count=1,hue=NULL,
+			  luminosity=c("bright","light","dark")){
+>>>>>>> c0c7b257ceee51c475f66a2052791cd31487b0e8
 	
 	# Path to python script.
 	root <- getrd()

@@ -1,9 +1,11 @@
 #' colormind
 #'
-#' query the colormind api for random colors. Seed colors can be 
+#' Query the colormind API for a random color palete. Seed colors can be 
 #' specified by passing up to five rgb colors to the function.
 #'
 #' @param c1 - a color passed as a rgb vector, e.g. c(85,90,84).
+#'
+#' @import rjson
 #'
 #' @export
 
