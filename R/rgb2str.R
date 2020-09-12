@@ -1,6 +1,6 @@
 #' rgb2str
 #'
-#' get the approximate name of a rgb color.
+#' get the approximate name of any rgb color.
 #'
 #' @param r - red
 #'

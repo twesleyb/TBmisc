@@ -1,6 +1,6 @@
 #' hex2str
 #'
-#' get the approximate name of a hex color.
+#' get the approximate name of any hex color
 #'
 #' @param hex - hexadecimal color
 #'
