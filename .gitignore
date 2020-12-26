@@ -2,8 +2,6 @@
 ARCHIVE/
 *.swp
 bin/
-
-# ignore renv library
-renv/library/
-renv/staging/
-renv/settings.dcf
+renv/
+renv.lock
+.Rprofile
