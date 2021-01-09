@@ -17,7 +17,7 @@ rgb2str(r, g, b, show = FALSE)
 color - name of the color
 }
 \description{
-get the approximate name of a rgb color.
+get the approximate name of any rgb color.
 }
 \references{
 [Silence Dogood](https://bit.ly/3gngca8)

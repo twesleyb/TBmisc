@@ -7,7 +7,7 @@
 prompt(prompt = NULL)
 }
 \value{
-reads input from user.
+reads input from user
 }
 \description{
 prompt the user

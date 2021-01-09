@@ -1,6 +1,6 @@
 #' prompt the user
 #'
-#' @return reads input from user.
+#' @return reads input from user
 #'
 #' @author the internet
 #'

@@ -1,4 +1,4 @@
-#' Create an excel workbook.
+#' Create an excel workbook
 #'
 #' @param data - named list of data frames (or equivalent) to be written to
 #' an excel document.
@@ -20,12 +20,8 @@
 #' @keywords write excel write.excel document xlsx xls
 #'
 #' @import openxlsx
-#'
-#' @examples
-#' write.excel(data, file = "foo.xlsx")
-#' @export
 
-write_excel <- function(data, file, rowNames = FALSE, colNames = TRUE, ...) {
+writeExcel <- function(data, file, rowNames = FALSE, colNames = TRUE, ...) {
   if (class(data) == "list") {
     list <- data
   } else {

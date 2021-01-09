@@ -13,7 +13,7 @@ hex2str(hex)
 color - name of the color
 }
 \description{
-get the approximate name of a hex color.
+get the approximate name of any hex color
 }
 \references{
 [Silence Dogood](https://bit.ly/3gngca8)
