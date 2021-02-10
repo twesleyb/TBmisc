@@ -20,6 +20,8 @@
 #' @keywords write excel write.excel document xlsx xls
 #'
 #' @import openxlsx
+#'
+#' @export writeExcel
 
 writeExcel <- function(data, file, rowNames = FALSE, colNames = TRUE, ...) {
   if (class(data) == "list") {
