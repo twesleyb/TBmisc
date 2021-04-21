@@ -1,10 +1,10 @@
-Package: TBmiscR
+Package: miscR
 Title: Miscellaneous R Functions
 Version: 0.0.0.9000
-Authors@R: person("Tyler", "Bradshaw", email = "tyler.w.bradshaw@duke.edu", role = c("aut", "cre"))
+Authors@R: person("Tyler", "Bradshaw", email = "twesleyb10@gmail.com", role = c("aut", "cre"))
 Description: a collection of R utility functions
 Depends: R (>= 3.5.1)
-License: What license is it under?
+License: CC4
 Encoding: UTF-8
 LazyData: false
 RoxygenNote: 7.1.1
