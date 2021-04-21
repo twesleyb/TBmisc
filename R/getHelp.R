@@ -1,3 +1,4 @@
+
 get_help <- function(fun, pkg = NULL) {
 	# Define a function to parse the help documentation of an R
 	# function.
