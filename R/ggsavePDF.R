@@ -4,7 +4,7 @@
 #'
 #' @return none
 #'
-#' @author Tyler W Bradshaw, \email{tyler.w.bradshaw@duke.edu}
+#' @author Tyler W Bradshaw, \email{twesleyb10@gmail.com}
 #'
 #' @references none
 #'
