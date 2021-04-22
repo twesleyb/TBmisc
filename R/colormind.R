@@ -1,15 +1,21 @@
 #' colormind
 #'
-#' Query the colormind API for a random color palete. Seed colors can be 
+#' Query the colormind API for a random color palette. Seed colors can be 
 #' specified by passing up to five rgb colors to the function.
 #'
 #' @param c1 - a color passed as a rgb vector, e.g. c(85,90,84).
+#' @param c2 - a color passed as a rgb vector, e.g. c(85,90,84).
+#' @param c3 - a color passed as a rgb vector, e.g. c(85,90,84).
+#' @param c4 - a color passed as a rgb vector, e.g. c(85,90,84).
+#' @param c5 - a color passed as a rgb vector, e.g. c(85,90,84).
+#'
+#' @references \href{http://colormind.io/}{colormind}
 #'
 #' @import rjson
 #'
 #' @export
 
-# Query colormind api for random colors.
+# Query colormind api for a random color palette
 colormind <- function(c1=NA,c2=NA,c3=NA,c4=NA,c5=NA) {
 
 	## DEFAULTS:
