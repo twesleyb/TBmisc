@@ -19,6 +19,6 @@ ggsavePDF(plots, file)
 none
 }
 \author{
-Tyler W Bradshaw, \email{tyler.w.bradshaw@duke.edu}
+Tyler W Bradshaw, \email{twesleyb10@gmail.com}
 }
 \keyword{none}

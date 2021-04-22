@@ -1,10 +1,10 @@
 # TBmiscR
 
-This repository contains potentially useful R functions.
+This repository contains R utility functions.
 
 ## Usage
 
 ```R
 # Download with devtools:
-devtools::install_github("twesleyb/TBmiscr")
+devtools::install_github("twesleyb/miscR")
 ```

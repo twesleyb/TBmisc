@@ -7,13 +7,17 @@
 getrd(dpattern = ".git", fpattern = NULL, max_trys = 5)
 }
 \arguments{
-\item{none}{}
+\item{dpattern}{- directory pattern specifying root directory}
+
+\item{fpattern}{- file pattern specifying project's root directory}
+
+\item{max_tries}{- maximum depth of project tree}
 }
 \value{
 
 }
 \description{
-get the root directory of a git project.
+get the root directory of a git project
 }
 \examples{
 getrd()
@@ -22,6 +26,6 @@ getrd()
 none
 }
 \author{
-Tyler W Bradshaw, \email{tyler.w.bradshaw@duke.edu}
+Tyler W Bradshaw, \email{twesleyb10@gmail.com}
 }
 \keyword{}
