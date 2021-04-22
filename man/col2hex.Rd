@@ -16,12 +16,12 @@ none
 Convert a color's character string to its hexadecimal code.
 }
 \examples{
-col2hex('red', 204)
+col2hex('red')
 }
 \references{
 none
 }
 \author{
-Tyler W Bradshaw, \email{tyler.w.bradshaw@duke.edu}
+Tyler W Bradshaw, \email{twesleyb10@gmail.com}
 }
 \keyword{none}
