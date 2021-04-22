@@ -1,12 +1,14 @@
 #' getrd - get a git repositories root directory
 #'
-#' get the root directory of a git project.
+#' get the root directory of a git project
 #'
-#' @param none
+#' @param dpattern - directory pattern specifying root directory 
+#' @param fpattern - file pattern specifying project's root directory
+#' @param max_tries - maximum depth of project tree
 #'
 #' @return
 #'
-#' @author Tyler W Bradshaw, \email{tyler.w.bradshaw@duke.edu}
+#' @author Tyler W Bradshaw, \email{twesleyb10@gmail.com}
 #'
 #' @references none
 #'
@@ -19,7 +21,7 @@
 getrd <- function(dpattern = ".git", fpattern = NULL, max_trys = 5) {
   here <- getwd()
   if (!is.null(dpattern) & is.null(fpattern)) {
-    # Loop to search for directory pattern.
+    # loop to search for directory pattern
     root <- FALSE
     i <- 0
     while (!root & i < max_trys) {
@@ -30,7 +32,7 @@ getrd <- function(dpattern = ".git", fpattern = NULL, max_trys = 5) {
       }
     }
   } else if (!is.null(fpattern) & is.null(dpattern)) {
-    # Loop to search for file pattern.
+    # loop to search for file pattern
     root <- FALSE
     i <- 0
     while (!root & i < max_trys) {
@@ -43,7 +45,7 @@ getrd <- function(dpattern = ".git", fpattern = NULL, max_trys = 5) {
   } else {
     stop("Please provide a file pattern or directory pattern.")
   }
-  # Check if root was found.
+  # check if root was found
   if (root) {
     root_directory <- here
     return(root_directory)
